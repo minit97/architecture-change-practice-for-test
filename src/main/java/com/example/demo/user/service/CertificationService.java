@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 public class CertificationService {
     private final MailSender mailSender;
 
-    public void sendCertificationEmail(String email, long userId, String certificationCode) {
+    public void send(String email, long userId, String certificationCode) {
         String certificationUrl = generateCertificationUrl(userId, certificationCode);
         String title = "Please certify your email address";
         String content = "Please click the following link to certify your email address: " + certificationUrl;
         mailSender.send(email, title, content);
     }
 
-    public String generateCertificationUrl(long userId, String certificationCode) {
+    private String generateCertificationUrl(long userId, String certificationCode) {
         return "http://localhost:8080/api/users/" + userId + "/verify?certificationCode=" + certificationCode;
     }
 }

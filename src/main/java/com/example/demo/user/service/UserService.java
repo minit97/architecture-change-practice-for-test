@@ -44,7 +44,7 @@ public class UserService {
         userEntity.setStatus(UserStatus.PENDING);
         userEntity.setCertificationCode(UUID.randomUUID().toString());
         userEntity = userRepository.save(userEntity);
-        certificationService.sendCertificationEmail(userCreateDto.getEmail(), userEntity.getId(), userEntity.getCertificationCode());
+        certificationService.send(userCreateDto.getEmail(), userEntity.getId(), userEntity.getCertificationCode());
         return userEntity;
     }
 
