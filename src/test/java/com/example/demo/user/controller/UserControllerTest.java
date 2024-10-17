@@ -57,7 +57,7 @@ class UserControllerTest {
 
         // when
 //        ResponseEntity<UserResponse> result = userController.getUserById(1);
-        ResponseEntity<UserResponse> result = testContainer.userController.getUserById(1);
+        ResponseEntity<UserResponse> result = testContainer.userController.getById(1);
 
 
         // then
@@ -79,7 +79,7 @@ class UserControllerTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            testContainer.userController.getUserById(12345);
+            testContainer.userController.getById(12345);
         }).isInstanceOf(ResourceNotFoundException.class);
     }
 
